@@ -27,6 +27,16 @@ router.get("/api/workouts/range", ({ body }, res) => {
     });
 });
 
+router.get("/api/workouts", ({ body }, res) => {
+  Workout
+  .find({})
+    .then(dbWorkout => {
+      res.json(dbWorkout);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 // router.post("/api/transaction/bulk", ({ body }, res) => {
 //   Transaction.insertMany(body)
 //     .then(dbTransaction => {

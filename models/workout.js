@@ -30,13 +30,20 @@ const workoutSchema = new Schema({
         type: Number
       },
   }
-  ] ,
+  ],
  
   day: {
     type: Date,
     default: Date.now
-  }
+  },
+  
 });
+
+workoutSchema.methods.totalDuration = function() {
+ // this.username = `${this.username}...the Coolest!`;
+  return "0";
+};
+
 
 const Workout = mongoose.model("Workout", workoutSchema);
 
