@@ -1,1 +1,2 @@
 # Workout-Tracker
+This app allows the user to create and track workouts for their daily routine, as well as distance traveled for cardio exercises and the name, type, weight, sets, reps, and duration of resistance exercises.
