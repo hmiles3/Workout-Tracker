@@ -37,15 +37,33 @@ router.get("/api/workouts", ({ body }, res) => {
       res.status(400).json(err);
     });
 });
-// router.post("/api/transaction/bulk", ({ body }, res) => {
-//   Transaction.insertMany(body)
-//     .then(dbTransaction => {
-//       res.json(dbTransaction);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
+
+router.put("/api/workouts/:id", ({params,body}, res) => {
+  console.log("inside put request"+params.id)
+  console.log(body)
+  Workout.findByIdAndUpdate(
+    {_id:params.id},
+    {$push:{"exercises": body}}, 
+    function(err, result){
+
+    if(err){
+        res.send(err)
+    }
+    else{
+        res.send(result)
+    }
+
+})
+});
+router.post("/api/workouts", ({ body }, res) => {
+  Workout.create({})
+    .then(workoutData => {
+      res.json(workoutData);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
 
 // router.get("/api/transaction", (req, res) => {
 //   Transaction.find({})
